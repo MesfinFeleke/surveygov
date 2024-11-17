@@ -44,7 +44,7 @@ function LoginModal({ isOpen, onClose }) {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:border-navy-800"
             />
           </div>
           <div className="space-y-2">
@@ -60,12 +60,12 @@ function LoginModal({ isOpen, onClose }) {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-navy-800 focus:border-navy-800"
             />
           </div>
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+            className="w-full bg-navy-700 text-white py-2 px-4 rounded-md hover:bg-navy-800 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:ring-offset-2 transition duration-200"
           >
             Sign In
           </button>
@@ -81,7 +81,7 @@ function LoginModal({ isOpen, onClose }) {
 
           <button
             type="button"
-            className="w-full flex items-center justify-center gap-3 px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-200"
+            className="w-full flex items-center justify-center gap-3 px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-navy-800 focus:ring-offset-2 transition duration-200"
             onClick={handleGoogleSignIn}
           >
             <img

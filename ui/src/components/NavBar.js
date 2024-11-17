@@ -8,19 +8,19 @@ function NavBar() {
 
   return (
     <>
-      <nav className="bg-blue-600 shadow-lg">
+      <nav className="bg-navy-900 shadow-lg">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center h-16">
             <div className="text-white text-xl font-bold">Survey Designer</div>
             <div className="space-x-4">
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-200"
+                className="bg-navy-800 hover:bg-navy-700 text-white font-medium py-2 px-4 rounded transition duration-200"
                 onClick={() => setIsSignupModalOpen(true)}
               >
                 Sign Up
               </button>
               <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded transition duration-200"
+                className="bg-navy-800 hover:bg-navy-700 text-white font-medium py-2 px-4 rounded transition duration-200"
                 onClick={() => setIsLoginModalOpen(true)}
               >
                 Sign In

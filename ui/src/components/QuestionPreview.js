@@ -11,15 +11,18 @@ function QuestionPreview({ questions }) {
           No questions added yet.
         </p>
       ) : (
-        <div className="space-y-6">
+        <div className="space-y-8">
           {questions.map((question, index) => (
-            <div key={index} className="border-b pb-4 last:border-b-0">
-              <p className="font-medium mb-2">
+            <div
+              key={index}
+              className="border border-gray-200 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
+            >
+              <p className="font-medium text-lg mb-4">
                 {index + 1}. {question.text}
               </p>
               {(question.type === "multiple-choice" ||
                 question.type === "checkbox-list") && (
-                <div className="space-y-2 ml-4">
+                <div className="space-y-3 ml-6">
                   {question.options.map((option, optIndex) => (
                     <div key={optIndex} className="flex items-center">
                       <input
@@ -29,9 +32,9 @@ function QuestionPreview({ questions }) {
                             : "checkbox"
                         }
                         name={`question-${index}`}
-                        className="mr-2"
+                        className="mr-3 h-4 w-4 text-navy-900"
                       />
-                      <span>{option}</span>
+                      <span className="text-gray-700">{option}</span>
                     </div>
                   ))}
                 </div>
@@ -39,7 +42,7 @@ function QuestionPreview({ questions }) {
               {(question.type === "text" || question.type === "short-text") && (
                 <input
                   type="text"
-                  className="w-full border rounded-md p-2 mt-1"
+                  className="w-full border border-gray-300 rounded-md p-3 mt-2 focus:ring-2 focus:ring-navy-800 focus:border-navy-800 outline-none"
                   placeholder="Enter your answer"
                 />
               )}

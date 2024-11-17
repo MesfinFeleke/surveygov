@@ -43,24 +43,23 @@ function QuestionDesigner({ onAddQuestion }) {
   };
 
   return (
-    <div className="p-6 bg-white rounded-lg shadow-sm">
-      <h3 className="text-xl font-semibold mb-6 text-gray-800">
+    <div className="p-8 bg-white rounded-lg shadow-sm">
+      <h3 className="text-xl font-semibold mb-8 text-gray-800">
         Question Designer
-        <div className="bg-blue-500 text-white p-4">
-          If this text has a blue background and white text with padding,
-          Tailwind is working!
+        <div className="bg-navy-900 text-white p-3 rounded-md mt-3 text-sm font-normal">
+          Design your own questions!
         </div>
       </h3>
 
-      <div className="space-y-4">
-        <div className="form-group">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+      <div className="space-y-6">
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">
             Question Type
           </label>
           <select
             value={questionType}
             onChange={(e) => setQuestionType(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-navy-800 focus:border-navy-800 sm:text-sm p-2.5"
           >
             {questionTypes.map((type) => (
               <option key={type.id} value={type.id}>
@@ -70,8 +69,8 @@ function QuestionDesigner({ onAddQuestion }) {
           </select>
         </div>
 
-        <div className="form-group">
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+        <div className="space-y-2">
+          <label className="block text-sm font-medium text-gray-700">
             Question Text
           </label>
           <input
@@ -79,37 +78,37 @@ function QuestionDesigner({ onAddQuestion }) {
             placeholder="Enter question text"
             value={questionText}
             onChange={(e) => setQuestionText(e.target.value)}
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-navy-800 focus:border-navy-800 sm:text-sm p-2.5"
           />
         </div>
 
         {(questionType === "multiple-choice" ||
           questionType === "checkbox-list") && (
-          <div className="form-group">
-            <label className="block text-sm font-medium text-gray-700 mb-1">
+          <div className="space-y-3">
+            <label className="block text-sm font-medium text-gray-700">
               Options
             </label>
-            <div className="space-y-2">
+            <div className="space-y-3">
               {options.map((option, index) => (
-                <div key={index} className="flex items-center gap-2">
+                <div key={index} className="flex items-center gap-3">
                   <input
                     type="text"
                     value={option}
                     onChange={(e) => updateOption(index, e.target.value)}
                     placeholder={`Option ${index + 1}`}
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                    className="block w-full rounded-md border-gray-300 shadow-sm focus:ring-2 focus:ring-navy-800 focus:border-navy-800 sm:text-sm p-2.5"
                   />
                   <button
                     onClick={() => removeOption(index)}
                     className="p-2 text-gray-400 hover:text-red-500 transition-colors"
                   >
-                    <X size={20} />
+                    <X size={18} />
                   </button>
                 </div>
               ))}
               <button
                 onClick={addOption}
-                className="inline-flex items-center gap-1 text-sm text-indigo-600 hover:text-indigo-500"
+                className="inline-flex items-center gap-2 text-sm text-navy-800 hover:text-navy-600 font-medium mt-2"
               >
                 <Plus size={16} />
                 Add Option
@@ -120,7 +119,7 @@ function QuestionDesigner({ onAddQuestion }) {
 
         <button
           onClick={handleSubmit}
-          className="mt-4 inline-flex items-center gap-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+          className="mt-6 inline-flex items-center gap-2 px-5 py-2.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-navy-900 hover:bg-navy-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-navy-800 transition-colors w-full justify-center"
         >
           <Plus size={16} />
           Add Question

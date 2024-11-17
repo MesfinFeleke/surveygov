@@ -1,6 +1,7 @@
 import { useState } from "react";
 import QuestionDesigner from "./QuestionDesigner";
 import QuestionPreview from "./QuestionPreview";
+import "./SurveyDesigner.css";
 
 function SurveyDesigner() {
   const [questions, setQuestions] = useState([]);

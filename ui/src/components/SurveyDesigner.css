@@ -1,0 +1,17 @@
+.survey-designer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.survey-workspace {
+  display: flex;
+  gap: 20px;
+}
+
+/* Make QuestionDesigner and QuestionPreview have equal width */
+.question-designer,
+.question-preview {
+  flex: 1;
+  min-width: 0; /* Prevents flex items from overflowing */
+}

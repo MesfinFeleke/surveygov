@@ -1,41 +1,57 @@
+import React from "react";
+import "./QuestionPreview.css";
+
 function QuestionPreview({ questions }) {
+  if (!questions || questions.length === 0) {
+    return (
+      <div className="question-preview">
+        <h3>Survey Preview</h3>
+        <div className="no-questions">No questions added yet.</div>
+      </div>
+    );
+  }
+
   return (
     <div className="question-preview">
-      <h2>Survey Preview</h2>
-      {questions.map((question, index) => (
-        <div key={index} className="preview-question">
-          <h3>Question {index + 1}</h3>
-          <p>{question.text}</p>
-
-          {question.type === "multiple-choice" && (
-            <div>
-              {question.options.map((option, i) => (
-                <div key={i}>
-                  <input type="radio" name={`question-${index}`} /> {option}
-                </div>
-              ))}
+      <h3>Survey Preview</h3>
+      <div className="questions-list">
+        {questions.map((question, index) => (
+          <div key={index} className="preview-question">
+            <div className="question-text">
+              {index + 1}. {question.text}
             </div>
-          )}
 
-          {question.type === "checkbox-list" && (
-            <div>
-              {question.options.map((option, i) => (
-                <div key={i}>
-                  <input type="checkbox" /> {option}
-                </div>
-              ))}
-            </div>
-          )}
+            {(question.type === "multiple-choice" ||
+              question.type === "checkbox-list") && (
+              <div className="options-list">
+                {question.options.map((option, optIndex) => (
+                  <div key={optIndex} className="option">
+                    <input
+                      type={
+                        question.type === "multiple-choice"
+                          ? "radio"
+                          : "checkbox"
+                      }
+                      name={`question-${index}`}
+                      disabled
+                    />
+                    <label>{option}</label>
+                  </div>
+                ))}
+              </div>
+            )}
 
-          {question.type === "short-text" && (
-            <input type="text" placeholder="Enter your answer" />
-          )}
-
-          {question.type === "long-text" && (
-            <textarea placeholder="Enter your answer" rows="4" />
-          )}
-        </div>
-      ))}
+            {question.type === "text" && (
+              <input
+                type="text"
+                className="text-input"
+                placeholder="Enter your answer"
+                disabled
+              />
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Plus, X } from "lucide-react";
 
-function QuestionDesigner({ onAddQuestion }) {
+function QuestionDesigner({ onAddQuestion, onSaveSurvey }) {
+  const [surveyTitle, setSurveyTitle] = useState("");
   const [questionType, setQuestionType] = useState("multiple-choice");
   const [questionText, setQuestionText] = useState("");
   const [options, setOptions] = useState([""]);
@@ -42,8 +43,24 @@ function QuestionDesigner({ onAddQuestion }) {
     setOptions([""]);
   };
 
+  const handleSave = () => {
+    onSaveSurvey({ title: surveyTitle, questions: options });
+    alert("Survey saved!");
+  };
+
   return (
-    <div className="p-4 bg-white rounded-lg shadow-sm">
+    <div
+      className="p-4 bg-white rounded-lg shadow-sm"
+      style={{ flex: "0 0 33.33%" }}
+    >
+      <h3 className="text-lg font-semibold mb-3 text-gray-800">Survey Title</h3>
+      <input
+        type="text"
+        placeholder="Enter survey title"
+        value={surveyTitle}
+        onChange={(e) => setSurveyTitle(e.target.value)}
+        className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:ring-1 focus:ring-navy-800 focus:border-navy-800 text-sm p-1.5 mb-4"
+      />
       <h3 className="text-lg font-semibold mb-3 text-gray-800">
         Question Designer
         <div className="bg-navy-900 text-white p-2 rounded-md mt-2 text-sm font-normal">
@@ -123,6 +140,13 @@ function QuestionDesigner({ onAddQuestion }) {
         >
           <Plus size={14} />
           Add Question
+        </button>
+
+        <button
+          onClick={handleSave}
+          className="mt-4 inline-flex items-center gap-2 px-4 py-1.5 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-green-600 hover:bg-green-500 focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-green-600 transition-colors w-full justify-center"
+        >
+          Save Survey
         </button>
       </div>
     </div>

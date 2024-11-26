@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ThemeProvider } from "next-themes";
 import NavBar from "./components/NavBar";
 import QuestionDesigner from "./components/QuestionDesigner";
-import QuestionPreview from "./components/QuestionPreview";
+import SurveyPreview from "./components/SurveyPreview";
 
 function App() {
   const [questions, setQuestions] = useState([]);
@@ -22,7 +22,7 @@ function App() {
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <QuestionDesigner onAddQuestion={handleAddQuestion} />
-            <QuestionPreview
+            <SurveyPreview
               questions={questions}
               onDeleteQuestion={handleDeleteQuestion}
             />

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Plus, X } from "lucide-react";
 
 function QuestionDesigner({ onAddQuestion, onSaveSurvey }) {
@@ -44,8 +44,11 @@ function QuestionDesigner({ onAddQuestion, onSaveSurvey }) {
   };
 
   const handleSave = () => {
-    onSaveSurvey({ title: surveyTitle, questions: options });
-    alert("Survey saved!");
+    if (onSaveSurvey) {
+      onSaveSurvey(surveyTitle);
+    } else {
+      console.error("onSaveSurvey is not a function");
+    }
   };
 
   return (

@@ -1,33 +1,37 @@
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import QuestionDesigner from "./QuestionDesigner";
-import QuestionPreview from "./QuestionPreview";
+import Dashboard from "./Dashboard";
 
 function SurveyDesigner() {
   const [questions, setQuestions] = useState([]);
-  const previewRef = useRef(null);
+  const [surveys, setSurveys] = useState([]);
 
   const addQuestion = (newQuestion) => {
     setQuestions([...questions, newQuestion]);
   };
 
-  useEffect(() => {
-    if (previewRef.current) {
-      previewRef.current.scrollTop = previewRef.current.scrollHeight;
-    }
-  }, [questions]);
+  const onSaveSurvey = (surveyTitle) => {
+    const newSurvey = {
+      title: surveyTitle,
+      questions: questions,
+    };
+
+    setSurveys([...surveys, newSurvey]);
+    console.log("Survey saved:", newSurvey);
+  };
 
   return (
     <div className="survey-designer">
       <h1>Survey Designer</h1>
-      <div
-        className="survey-workspace"
-        style={{ display: "flex", width: "100%" }}
-      >
+      <div style={{ display: "flex", width: "100%" }}>
         <div style={{ flex: "0 0 33.33%", position: "sticky", top: 0 }}>
-          <QuestionDesigner onAddQuestion={addQuestion} />
+          <QuestionDesigner
+            onAddQuestion={addQuestion}
+            onSaveSurvey={onSaveSurvey}
+          />
         </div>
-        <div ref={previewRef} style={{ flex: "1", overflowY: "auto" }}>
-          <QuestionPreview questions={questions} />
+        <div style={{ flex: "1" }}>
+          <Dashboard surveys={surveys} />
         </div>
       </div>
     </div>
